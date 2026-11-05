@@ -6,12 +6,14 @@ namespace MohawkGame2D
     public class Game
     {
         // Variables
-        // foodx and foody place the food in a random position
-        int foodx = Random.Integer(801);
-        int foody = Random.Integer(601);
+        // nosex and nosey place the nose in a random position
+        int nosex = Random.Integer(801);
+        int nosey = Random.Integer(601);
+
+        float timer = 0;
         
         // Classes
-        Food food = new Food();
+        Nose nose = new Nose();
         Ball ball = new Ball();
         public void Setup()
         {
@@ -24,29 +26,33 @@ namespace MohawkGame2D
             Window.SetTitle("Mr. Ball");
             Window.ClearBackground(Color.OffWhite);
 
+            timer += Time.DeltaTime;
+
             // Ball movement
             ball.x = Input.GetMouseX();
             ball.y = Input.GetMouseY();
-            // Food spawning
-            food.x = foodx;
-            food.y = foody;
+            // nose spawning
+            nose.x = nosex;
+            nose.y = nosey;
 
-            if (ball.x != food.x)
+            if (timer >= 0.75 && ball.x != nose.x)
             {
-                foodx = Random.Integer(801);
-                foody = Random.Integer(601);
-                food.x = foodx;
-                food.y = foody;
+                nosex = Random.Integer(801);
+                nosey = Random.Integer(601);
+                nose.x = nosex;
+                nose.y = nosey;
+
+                timer = 0;
             }
-            else
+            else if (ball.x == nose.x)
             {
-                food.x = ball.x;
-                food.y = ball.y;
+                nose.x = ball.x;
+                nose.y = ball.y;
             }
 
             // Class updates
             ball.Update();
-            food.Update();
+            nose.Update();
         }
     }
 

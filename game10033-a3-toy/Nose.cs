@@ -5,20 +5,20 @@ using System.Text;
 
 namespace MohawkGame2D
 {
-    internal class Food
+    internal class Nose
     {
         // Variables local to this class
-        // Food position
+        // Nose position
         public float x;
         public float y;
 
         public void Update()
         {
-            // Draw Food
+            // Draw Nose
             Draw.LineColor = Color.Black;
-            Draw.LineSize = 3;
-            Draw.FillColor = Color.Green;
-            Draw.Circle(x, y, 10);
+            Draw.LineSize = 2;
+            Draw.FillColor = Color.Yellow;
+            Draw.Ellipse(x, y, 10, 12);
         }
     }
 }
