@@ -5,6 +5,7 @@ namespace MohawkGame2D
 {
     public class Game
     {
+        Food food = new Food();
         Ball ball = new Ball();
         public void Setup()
         {
@@ -13,12 +14,20 @@ namespace MohawkGame2D
 
         public void Update()
         {
-            Window.SetTitle("Ball Program");
+            Window.SetTitle("Mr. Ball");
             Window.ClearBackground(Color.OffWhite);
 
-            ball.x = 400;
-            ball.y = 300;
+            // Food spawning
+            food.x = 100;
+            food.y = 100;
 
+            // Ball movement
+            ball.x = Input.GetMouseX();
+            ball.y = Input.GetMouseY();
+
+
+            // Class updates
+            food.Update();
             ball.Update();
         }
     }
